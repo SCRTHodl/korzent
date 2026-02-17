@@ -7,6 +7,7 @@
 1. **Canonicalization (RFC8785)**
    - All signed and hashed JSON values MUST be canonicalized with RFC8785 (JSON Canonicalization Scheme).
    - Canonicalization output MUST be byte-stable across platforms and runtimes.
+   - Implementations MUST treat canonicalization as a deterministic, pure function with no runtime-dependent formatting behavior.
 
 2. **Hashing algorithm and encoding**
    - Hash algorithm: SHA-256.
