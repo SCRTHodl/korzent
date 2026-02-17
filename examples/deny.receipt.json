@@ -1,0 +1,15 @@
+{
+  "protocol": "korzent",
+  "protocol_version": "1.0.0",
+  "schema_hash": "sha256:103e0121f3f5b71b9a6a8489feb7159c0e99518f1bb0f5fbee6e1709ec16f40f",
+  "trust_root_id": "demo-root",
+  "intent_hash": "sha256:0bd8d02f92bfe8e873443718d17a356a4762c73cfb3387a6ed74a012b18e1cad",
+  "policy_pack_hash": "sha256:1111111111111111111111111111111111111111111111111111111111111111",
+  "decision": "DENY",
+  "inputs_snapshot_hash": "sha256:d621de60fc6d0fc3ba403cebe06a0e3208a9c11ea9d7033c9324072a557a8709",
+  "epoch_hash": "sha256:2222222222222222222222222222222222222222222222222222222222222222",
+  "timestamp_utc": "2026-02-16T23:00:00.000Z",
+  "signing_key_id": "demo-k1",
+  "receipt_id": "sha256:e4099376de84c38ce89c9894b048f561e350548559ec7772a77661b1f85b3fe2",
+  "signature": "CX-KMe8b4_R4J1CDBiFhp0jS457Los4SYvQAvKMJPdE0wlXYZL7hJKiz3ZzEbaTlL_mtxRFXzBOcxgqV029nCQ"
+}

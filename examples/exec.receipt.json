@@ -1,0 +1,19 @@
+{
+  "protocol": "korzent",
+  "protocol_version": "1.0.0",
+  "schema_hash": "sha256:103e0121f3f5b71b9a6a8489feb7159c0e99518f1bb0f5fbee6e1709ec16f40f",
+  "trust_root_id": "demo-root",
+  "intent_hash": "sha256:b6523e9330e1e169be7bd8b435a69dd8380e8751ca1744e9dd05b4e27e59a30f",
+  "policy_pack_hash": "sha256:1111111111111111111111111111111111111111111111111111111111111111",
+  "decision": "ALLOW",
+  "inputs_snapshot_hash": "sha256:d7c4ba91270e954a0bb2caa9fdf3bcef4b031d59d0fcf66f11745cf978e79354",
+  "epoch_hash": "sha256:2222222222222222222222222222222222222222222222222222222222222222",
+  "timestamp_utc": "2026-02-16T23:02:00.000Z",
+  "signing_key_id": "demo-k1",
+  "parent_receipt_id": "sha256:4a843791f3c4c4d141b98e45274654afffcbbd43fd3fdbdf2622b5ce72ddf357",
+  "action_driver": "stripe_sim.charge",
+  "payload_hash": "sha256:df7e1558dbe016c9294641d040136ecf64d45c5f4f5836542c8d20e5a18c5264",
+  "result_hash": "sha256:d899a25119aed5fa4478a7039ba9ca68137ca644c560edf267a2b733ffa9cef0",
+  "receipt_id": "sha256:af595baa298346d4b62e6fd921c7b0f55ade00232ee3393bbd640584ba48d573",
+  "signature": "8E7_gM57-Ku6WfTgui-i4EzqdM4YWESuWKvj1mYYcAbCzf_zRdl7h4jzMet-0SVjczDAvzIF6gIk0pGhSU3XBg"
+}

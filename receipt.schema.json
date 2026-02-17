@@ -1,0 +1,273 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://korzent.dev/protocol/receipt.schema.json",
+  "title": "KORZENT Execution Governance Standard Receipt v1",
+  "description": "Locked v1 receipt schema for KORZENT evaluate/attempt/execute receipts.",
+  "type": "object",
+  "oneOf": [
+    {
+      "$ref": "#/$defs/evaluateReceipt"
+    },
+    {
+      "$ref": "#/$defs/attemptReceipt"
+    },
+    {
+      "$ref": "#/$defs/executionReceipt"
+    }
+  ],
+  "$defs": {
+    "hashRef": {
+      "type": "string",
+      "pattern": "^sha256:[0-9a-f]{64}$"
+    },
+    "zeroHash": {
+      "const": "sha256:0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    "nonZeroHashRef": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/hashRef"
+        },
+        {
+          "not": {
+            "$ref": "#/$defs/zeroHash"
+          }
+        }
+      ]
+    },
+    "timestampUtc": {
+      "type": "string",
+      "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}(?:\\.\\d{3})?Z$"
+    },
+    "signatureBase64Url": {
+      "type": "string",
+      "minLength": 86,
+      "maxLength": 86,
+      "pattern": "^[A-Za-z0-9_-]+$"
+    },
+    "evaluateReceipt": {
+      "type": "object",
+      "properties": {
+        "protocol": {
+          "const": "korzent"
+        },
+        "protocol_version": {
+          "const": "1.0.0"
+        },
+        "schema_hash": {
+          "$ref": "#/$defs/hashRef"
+        },
+        "trust_root_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "receipt_id": {
+          "$ref": "#/$defs/hashRef"
+        },
+        "intent_hash": {
+          "$ref": "#/$defs/nonZeroHashRef"
+        },
+        "policy_pack_hash": {
+          "$ref": "#/$defs/nonZeroHashRef"
+        },
+        "decision": {
+          "type": "string",
+          "enum": [
+            "ALLOW",
+            "DENY"
+          ]
+        },
+        "inputs_snapshot_hash": {
+          "$ref": "#/$defs/hashRef"
+        },
+        "epoch_hash": {
+          "$ref": "#/$defs/nonZeroHashRef"
+        },
+        "timestamp_utc": {
+          "$ref": "#/$defs/timestampUtc"
+        },
+        "signing_key_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "signature": {
+          "$ref": "#/$defs/signatureBase64Url"
+        }
+      },
+      "required": [
+        "protocol",
+        "protocol_version",
+        "schema_hash",
+        "trust_root_id",
+        "receipt_id",
+        "intent_hash",
+        "policy_pack_hash",
+        "decision",
+        "inputs_snapshot_hash",
+        "epoch_hash",
+        "timestamp_utc",
+        "signing_key_id",
+        "signature"
+      ],
+      "additionalProperties": false
+    },
+    "attemptReceipt": {
+      "type": "object",
+      "properties": {
+        "protocol": {
+          "const": "korzent"
+        },
+        "protocol_version": {
+          "const": "1.0.0"
+        },
+        "schema_hash": {
+          "$ref": "#/$defs/hashRef"
+        },
+        "trust_root_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "receipt_id": {
+          "$ref": "#/$defs/hashRef"
+        },
+        "intent_hash": {
+          "$ref": "#/$defs/nonZeroHashRef"
+        },
+        "policy_pack_hash": {
+          "$ref": "#/$defs/hashRef"
+        },
+        "decision": {
+          "const": "DENY"
+        },
+        "inputs_snapshot_hash": {
+          "$ref": "#/$defs/hashRef"
+        },
+        "epoch_hash": {
+          "$ref": "#/$defs/hashRef"
+        },
+        "timestamp_utc": {
+          "$ref": "#/$defs/timestampUtc"
+        },
+        "signing_key_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "signature": {
+          "$ref": "#/$defs/signatureBase64Url"
+        },
+        "deny_code": {
+          "type": "string",
+          "enum": [
+            "MISSING_ENV",
+            "INVALID_REQUEST",
+            "TRUST_ROOT_UNKNOWN",
+            "SIGNING_KEY_UNKNOWN",
+            "POLICY_MISSING",
+            "EPOCH_MISSING",
+            "INTERNAL_ERROR"
+          ]
+        },
+        "deny_message": {
+          "type": "string",
+          "maxLength": 256
+        }
+      },
+      "required": [
+        "protocol",
+        "protocol_version",
+        "schema_hash",
+        "trust_root_id",
+        "receipt_id",
+        "intent_hash",
+        "policy_pack_hash",
+        "decision",
+        "inputs_snapshot_hash",
+        "epoch_hash",
+        "timestamp_utc",
+        "signing_key_id",
+        "signature",
+        "deny_code"
+      ],
+      "additionalProperties": false
+    },
+    "executionReceipt": {
+      "type": "object",
+      "properties": {
+        "protocol": {
+          "const": "korzent"
+        },
+        "protocol_version": {
+          "const": "1.0.0"
+        },
+        "schema_hash": {
+          "$ref": "#/$defs/hashRef"
+        },
+        "trust_root_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "receipt_id": {
+          "$ref": "#/$defs/hashRef"
+        },
+        "intent_hash": {
+          "$ref": "#/$defs/nonZeroHashRef"
+        },
+        "policy_pack_hash": {
+          "$ref": "#/$defs/nonZeroHashRef"
+        },
+        "decision": {
+          "const": "ALLOW"
+        },
+        "inputs_snapshot_hash": {
+          "$ref": "#/$defs/hashRef"
+        },
+        "epoch_hash": {
+          "$ref": "#/$defs/nonZeroHashRef"
+        },
+        "timestamp_utc": {
+          "$ref": "#/$defs/timestampUtc"
+        },
+        "signing_key_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "signature": {
+          "$ref": "#/$defs/signatureBase64Url"
+        },
+        "parent_receipt_id": {
+          "$ref": "#/$defs/hashRef"
+        },
+        "action_driver": {
+          "type": "string",
+          "minLength": 1
+        },
+        "payload_hash": {
+          "$ref": "#/$defs/hashRef"
+        },
+        "result_hash": {
+          "$ref": "#/$defs/hashRef"
+        }
+      },
+      "required": [
+        "protocol",
+        "protocol_version",
+        "schema_hash",
+        "trust_root_id",
+        "receipt_id",
+        "intent_hash",
+        "policy_pack_hash",
+        "decision",
+        "inputs_snapshot_hash",
+        "epoch_hash",
+        "timestamp_utc",
+        "signing_key_id",
+        "signature",
+        "parent_receipt_id",
+        "action_driver",
+        "payload_hash",
+        "result_hash"
+      ],
+      "additionalProperties": false
+    }
+  }
+}

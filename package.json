@@ -1,0 +1,11 @@
+{
+  "name": "korzent",
+  "version": "1.0.0",
+  "license": "Apache-2.0",
+  "type": "module",
+  "scripts": {
+    "test": "../services/action-gateway/node_modules/.bin/vitest run",
+    "typecheck": "../services/action-gateway/node_modules/.bin/tsc -p tsconfig.json --noEmit",
+    "verify": "../services/action-gateway/node_modules/.bin/tsx cli/korzent.ts verify"
+  }
+}
