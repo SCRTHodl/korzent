@@ -79,6 +79,14 @@ Any modification to the receipt, schema, signature, or protocol fields results i
 
 ---
 
+## Spec and Conformance
+
+- **Specification:** [`PROTOCOL.md`](./PROTOCOL.md) — RFC-style normative requirements and conformance rules
+- **Test vectors:** `test-vectors/` — deterministic examples with pinned values; run `npm test` to validate
+- **CLI verification:** `npm run verify -- <receipt>.json --trust-root <pubkey>.txt`
+
+---
+
 ## Versioning
 
 Protocol version: **1.0.0**
